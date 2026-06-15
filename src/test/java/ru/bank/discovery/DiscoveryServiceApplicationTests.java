@@ -26,6 +26,7 @@ class DiscoveryServiceApplicationTests {
 	@Test
 	void eurekaDashboardShouldBeAvailable() {
 		ResponseEntity<String> response = restTemplate
+				.withBasicAuth("eureka", "eureka123")
 				.getForEntity("http://localhost:" + port + "/", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).contains("Eureka", "Instances");
@@ -34,6 +35,7 @@ class DiscoveryServiceApplicationTests {
 	@Test
 	void actuatorHealthShouldReturnUp() {
 		ResponseEntity<String> response = restTemplate
+				.withBasicAuth("eureka", "eureka123")
 				.getForEntity("http://localhost:" + port + "/actuator/health", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).contains("\"status\":\"UP\"");
@@ -42,6 +44,7 @@ class DiscoveryServiceApplicationTests {
 	@Test
 	void actuatorInfoShouldReturnApplicationInfo() {
 		ResponseEntity<String> response = restTemplate
+				.withBasicAuth("eureka", "eureka123")
 				.getForEntity("http://localhost:" + port + "/actuator/info", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).isNotNull();
@@ -50,8 +53,10 @@ class DiscoveryServiceApplicationTests {
 	@Test
 	void actuatorMetricsShouldReturnMetricsList() {
 		ResponseEntity<String> response = restTemplate
+				.withBasicAuth("eureka", "eureka123")
 				.getForEntity("http://localhost:" + port + "/actuator/metrics", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).contains("jvm", "system", "process");
 	}
+
 }
