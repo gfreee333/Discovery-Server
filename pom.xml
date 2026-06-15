@@ -8,7 +8,7 @@
 		<version>3.5.15</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ru.chuhmanov</groupId>
+	<groupId>ru.bank</groupId>
 	<artifactId>discovery-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
@@ -43,7 +43,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -119,5 +118,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
